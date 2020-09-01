@@ -3,6 +3,24 @@
     <li class="breadcrumb-item active">Cadastro</li>
 </ol>
 <div class="container">
+
+    <div class="row">
+        <div class = "col-md-12">
+            <div class="alert alert-success" *ngIf ="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+        </div>
+        <div class = "col-md-12">
+            <div class="alert alert-danger" *ngIf="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+
+    </div>
+
+
+
+
     <div class="row">
         <div class="col-md-2">
             <button class="btn btn-warning" (click)="novoCadastro()">
@@ -32,20 +50,17 @@
                         <td>{{ cliente.dataCadastro }}</td>
                         <td>
                             <button class="btn btn-primary" 
-                                    routerLink = "/clientes-form/{{ cliente.id}}">
+                                    routerLink = "/clientes/form/{{ cliente.id}}">
                                 <i class="fa fa-edit"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" >
+                            <button class="btn btn-danger" (click) ="preparaDelecao(cliente)"
+                                data-toggle="modal" data-target="#modalDelecao"  >
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>
-                        
-
-
                     </tr>
-
                 </tbody>
             </table>
 
@@ -55,11 +70,21 @@
 
     <div id="modalDelecao" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-header" >
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h4>Confirmaçao</h4>
 
-            </div>
-            <div class="modal-body">
+                </div>
+                <div class="modal-body" *ngIf="clienteSelecionado">
+                    Confirma a deleção do(a) Cliente {{ clienteSelecionado.nome }}
 
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Confirmar </button>
+                    <button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+
+                </div>
+                
             </div>
 
         </div>

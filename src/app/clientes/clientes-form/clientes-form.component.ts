@@ -42,7 +42,7 @@ export class ClientesFormComponent implements OnInit {
   }
 
   voltarParaListagem(){
-    this.router.navigate(['/clientes-lista'])
+    this.router.navigate(['/clientes/lista'])
 
   }
 
@@ -57,12 +57,10 @@ export class ClientesFormComponent implements OnInit {
           this.success = true;
           this.errors = null;
 
-
         },errorResponse =>{
           this.errors =['Erro ao atualizar o cliente']
         }
         )
-
 
     }else{
 
@@ -76,7 +74,7 @@ export class ClientesFormComponent implements OnInit {
           }, errorResponse =>{
             this.success = false
             this.errors = errorResponse.error.errors;
-            console.log(errorResponse);
+           // console.log(errorResponse);
           }
           )
     }

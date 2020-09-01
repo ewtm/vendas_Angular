@@ -1,0 +1,11 @@
+[0813/013515.320:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0813/013515.320:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0813/013515.320:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0813/013515.320:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0813/013515.320:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0813/013515.335:ERROR:exception_snapshot_win.cc(98)] thread ID 13656 not found in process
+[0813/013515.320:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[0813/013515.335:ERROR:exception_snapshot_win.cc(98)] thread ID 4412 not found in process
+[0822/180839.887:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: O comprimento do registro de informações especificado não coincide com o comprimento necessário à classe de informações especificada. (0xc0000004)
+[0823/133221.873:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: O comprimento do registro de informações especificado não coincide com o comprimento necessário à classe de informações especificada. (0xc0000004)
+[0823/133241.188:ERROR:process_info.cc(359)] UncheckedAllocate

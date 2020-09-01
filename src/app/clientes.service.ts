@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './clientes/cliente';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,48 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
+  apiURL : string = environment.apiURLBase + '/api/clientes';
 
-  salvar(cliente : Cliente): Observable<Cliente>{
-    return this.http.post<Cliente>('http://localhost:8080/sistema-vendas/api/clientes', cliente);
+  header(){
+    const tokenString = localStorage.getItem('access_token')
+    const token = JSON.parse(tokenString)
+    const headers = {
+      'Authorization': 'Bearer ' + token.access_token
+    }
+
+    return headers;
   }
 
-  atualizar(cliente: Cliente) : Observable<Cliente[]>{
-    return this.http.put<any>(`http://localhost:8080/sistema-vendas/api/clientes/${cliente.id}`, cliente);
+
+  salvar(cliente : Cliente): Observable<Cliente>{   
+    
+    const headers = this.header();
+    return this.http.post<Cliente>(`${this.apiURL}`, cliente, { headers } );
+  }
+
+  atualizar(cliente: Cliente) : Observable<any>{
+    return this.http.put<Cliente>(`${this.apiURL}/${cliente.id}`, cliente );
   }
 
   getClientes() : Observable<Cliente[]>{
-    return this.http.get<Cliente[]>('http://localhost:8080/sistema-vendas/api/clientes')
+    const headers = this.header();
+   
+    return this.http.get<Cliente[]>(`${this.apiURL}`,{ headers });
+    //return this.http.get<Cliente[]>(this.apiURL)
   }
 
-  getClientesById(id: number) : Observable<Cliente[]>{
-    return this.http.get<any>(`http://localhost:8080/sistema-vendas/api/clientes/${id}`)
+  getClientesById(id: number) : Observable<Cliente>{
+    return this.http.get<any>(`${this.apiURL}/${id}`)
   }
+
+
+  deletar(cliente: Cliente) : Observable<any>{
+    const headers = this.header();
+    return this.http.delete<any>(`${this.apiURL}/${cliente.id}`,{ headers });
+
+  }
+
+
 
   getClientesTest() : Cliente[]{
     let cliente = new Cliente();
